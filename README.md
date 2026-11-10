@@ -13,6 +13,9 @@ records build inputs and dependencies.
 `tools/source-lock.json` pins Linux v7.0.14, matching wireless headers,
 FreeBSD headers and the supplicant archive. `tools/fetch-sources.sh` verifies
 these inputs; generated sources and binaries live in `deps/` and `out/`.
+The fetcher uses non-cone sparse patterns because the lock selects both
+directories and individual files. Run it without `--check` to prepare a clean
+checkout, then use `--check` to verify the installed inputs.
 
 Production startup initializes cfg80211/mac80211 before ath12k. The manifest
 selects `src/nw_mainline.c`; the retired `nw_sta.c`, `nw_mac80211.c` and
